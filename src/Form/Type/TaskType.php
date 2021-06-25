@@ -2,6 +2,7 @@
 namespace App\Form\Type;
 
 use Carbon\Carbon;
+use Pimcore\Model\Asset\MetaData\ClassDefinition\Data\Data;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,6 +19,12 @@ class TaskType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $planes = [];
+        $planesObjects = new DataObject\Plane\Listing();
+            foreach($planesObjects as $planeObject) {
+                $planes[$planeObject->getName()] = $planeObject;
+            }
+            
         $builder
             ->add('number', TextType::class, [
                 'label' => 'Flight number: ',
@@ -50,11 +57,7 @@ class TaskType extends AbstractType
                 'label' => 'Choose plane: ',
                 'required' => true,
                 'attr' => ['class' => 'form-select'],
-                'choices' => [
-                    'Airbus' => DataObject\Plane::getById(6),
-                    'Boeing' => DataObject\Plane::getById(7),
-                    'Embraer' => DataObject\Plane::getById(8),
-                ],
+                'choices' => $planes,
             ])
             ->add('save', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-primary'],
