@@ -45,6 +45,8 @@ class DefaultController extends FrontendController
             } catch (\Exception $e) {
                 $this->addFlash('error', 'This number is not valid');
             }
+        }elseif ($form->isSubmitted() && !$form->isValid()) {
+            $this->addFlash('validError', 'Each field must not be EMPTY');
         }
         return $this->render('default/default.html.twig', [
             'form_flight' => $form->createView(),

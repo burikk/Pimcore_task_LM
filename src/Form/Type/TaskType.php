@@ -12,6 +12,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\IsTrue;
 
 class TaskType extends AbstractType
 {
@@ -29,21 +30,25 @@ class TaskType extends AbstractType
             ])
             ->add('from', TextType::class, [
                 'label' => 'From: ',
+                'required' => true,
                 'constraints' => [new NotBlank()],
                 'attr' => ['class' => 'form-control']
             ])
             ->add('to', TextType::class, [
                 'label' => 'To: ',
+                'required' => true,
                 'constraints' => [new NotBlank()],
                 'attr' => ['class' => 'form-control']
             ])
             ->add('dateFlight', DateType::class, [
                 'label' => 'Flight date: ',
+                'required' => true,
                 'constraints' => [new NotBlank()],
                 'attr' => ['class' => ''],
             ])
             ->add('plane', ChoiceType::class, [
                 'label' => 'Choose plane: ',
+                'required' => true,
                 'attr' => ['class' => 'form-select'],
                 'choices' => [
                     'Airbus' => DataObject\Plane::getById(6),
