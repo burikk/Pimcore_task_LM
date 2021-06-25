@@ -32,16 +32,13 @@ class DefaultController extends FrontendController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            //dd($data);
             $newFlight->setKey(\Pimcore\Model\Element\Service::getValidKey($data['number'], 'object'));
             $newFlight->setParentId(15);
             $newFlight->setNumber($data['number']);
             $newFlight->setFrom($data['from']);
             $newFlight->setTo($data['to']);
             $newFlight->setDateFlight(new Carbon($data['dateFlight']));
-            //dd($data);
             $newFlight->setPlane($data['plane']);
-            //dd($data);
             try {
                 $newFlight->save();
                 $this->addFlash('success', 'Flight number was saved');
@@ -54,28 +51,3 @@ class DefaultController extends FrontendController
         ]);
     }
 }
-        //$newFlight = new DataObject\Flight();
-        
-        //$form = $this->createFormBuilder($newFlight)
-            //->add('numer', TextType::class)
-            //->getForm(); 
-
-            //$newFlight->setNumber('');    
-        //$newFlight->setKey(\Pimcore\Model\Element\Service::getValidKey($request->get('number'), 'object'));
-        //$newFlight->setParentId(15);
-
-        // sprawdzić jaką metodą został wysłany formularz
-
-        /*  if ($request->getMethod() === 'POST') {
-            $newFlight = new DataObject\Flight();
-            $newFlight->setKey(\Pimcore\Model\Element\Service::getValidKey($request->get('number'), 'object'));
-            $newFlight->setParentId(15);
-            $newFlight->setNumber($request->get('number'));
-            try {
-                $newFlight->save();
-                $this->addFlash('success', 'Flight number was saved');
-            } catch (\Exception $e) {
-                $this->addFlash('error', $e->getMessage());
-            }
-        }  */
-        //return[]; 
