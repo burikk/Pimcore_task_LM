@@ -1,32 +1,12 @@
-# Pimcore Project Skeleton 
+screeny działania programu
+[1] - wygląd po załadowaniu strony
+[2] - widok obiektów klasy newFlight w Pimcore
+[3] - udana próba stworzyć nowy obiekt klasy newFlight
+[4] - widok nowego obiektu klasy newFlight Pimcore
+[5] - próba utworzenia nowego obiektu klasy newFlight o tym samym numerze. Występuję błąd. Numer powinien być unikalny.
 
-This skeleton should be used by experienced Pimcore developers for starting a new project from the ground up. 
-If you are new to Pimcore, it's better to start with our demo package, listed below 😉
-
-## Getting started
-```bash
-COMPOSER_MEMORY_LIMIT=-1 composer create-project pimcore/skeleton my-project
-cd ./my-project
-./vendor/bin/pimcore-install
-```
-
-- Point your virtual host to `my-project/public` 
-- Open https://your-host/admin in your browser
-- Done! 😎
-
-## Docker
-
-You can also use Docker to setup a new Pimcore Installation:
-
-```bash
-COMPOSER_MEMORY_LIMIT=-1 composer create-project pimcore/skeleton my-project
-cd ./my-project
-docker-compose run --rm php vendor/bin/pimcore-install --mysql-host-socket=db --mysql-username=pimcore --mysql-password=pimcore --mysql-database=pimcore
-docker-compose run --rm php chown -R www-data:www-data var/*
-docker-compose up -d
-```
-You can now navigate your browser to https://localhost or https://localhost/admin.
-The default docker-compose comes with PHP 8.0 on debian-buster and mariadb 10.5.
-
-## Other demo/skeleton packages
-- [Pimcore Basic Demo](https://github.com/pimcore/demo)
+![1](https://user-images.githubusercontent.com/83430330/123291282-42191600-d512-11eb-98fb-a5f2f9e27587.png)
+![2](https://user-images.githubusercontent.com/83430330/123291288-42b1ac80-d512-11eb-842b-47d83c331554.png)
+![3](https://user-images.githubusercontent.com/83430330/123291290-434a4300-d512-11eb-8ba0-ff787dfa81b0.png)
+![4](https://user-images.githubusercontent.com/83430330/123291291-434a4300-d512-11eb-8669-e11541829c76.png)
+![5](https://user-images.githubusercontent.com/83430330/123291293-43e2d980-d512-11eb-95d2-85cf4c0ede63.png)
