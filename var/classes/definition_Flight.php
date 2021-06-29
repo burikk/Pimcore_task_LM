@@ -12,6 +12,7 @@ Fields Summary:
 - dateFlight [date]
 - plane [manyToOneRelation]
 - cargos [manyToManyObjectRelation]
+- waybill [manyToOneRelation]
 */ 
 
 
@@ -20,7 +21,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Flight',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1624441802,
+   'modificationDate' => 1624966843,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -248,6 +249,54 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'noteditable' => false,
              'index' => false,
              'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+          )),
+          6 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
+             'fieldtype' => 'manyToOneRelation',
+             'width' => '',
+             'assetUploadPath' => '',
+             'relationType' => true,
+             'objectsAllowed' => false,
+             'assetsAllowed' => true,
+             'assetTypes' => 
+            array (
+              0 => 
+              array (
+                'assetTypes' => 'folder',
+              ),
+              1 => 
+              array (
+                'assetTypes' => 'image',
+              ),
+              2 => 
+              array (
+                'assetTypes' => 'document',
+              ),
+            ),
+             'documentsAllowed' => false,
+             'documentTypes' => 
+            array (
+            ),
+             'classes' => 
+            array (
+            ),
+             'pathFormatterClass' => '',
+             'name' => 'waybill',
+             'title' => 'Put your waybill here',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',

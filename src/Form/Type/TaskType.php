@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use \Pimcore\Model\DataObject;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -70,6 +71,12 @@ class TaskType extends AbstractType
                 'choices' => $cargos,
                 'expanded' => true,
                 'multiple' => true,
+            ])
+            ->add('waybill', FileType::class, [
+                'label' => 'Put your waybill image here: ',
+                'required' => true,
+                'multiple' => false,
+
             ])
             ->add('save', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-primary'],

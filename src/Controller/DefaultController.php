@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use App\Form\Type\TaskType;
 use Carbon\Carbon;
+use Pimcore;
 use Pimcore\Model\DataObject\Plane;
 
 class DefaultController extends FrontendController
@@ -26,6 +27,7 @@ class DefaultController extends FrontendController
     public function defaultAction(Request $request)
     {
         $newFlight = new DataObject\Flight();
+        $newAsset = new Pimcore\Model\Asset();
 
         $form = $this->createForm(TaskType::class);
 
@@ -40,6 +42,14 @@ class DefaultController extends FrontendController
             $newFlight->setDateFlight(new Carbon($data['dateFlight']));
             $newFlight->setPlane($data['plane']);
             $newFlight->setCargos($data['cargo']);
+            
+            $newAsset->setFilename($data['waybill']->getClientOriginalName());
+            $newAsset->setData(file_get_contents($data['waybill']->getRealPath()));
+            $newAsset->setParentId(2);
+            $newAsset->save();
+
+            $newFlight->setWaybill($newAsset);
+
             try {
                 $newFlight->save();
                 $this->addFlash('success', 'Flight number was saved');
