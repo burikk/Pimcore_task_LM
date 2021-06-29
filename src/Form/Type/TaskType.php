@@ -24,7 +24,11 @@ class TaskType extends AbstractType
             foreach($planesObjects as $planeObject) {
                 $planes[$planeObject->getName()] = $planeObject;
             }
-            
+        $cargos = [];
+        $cargosObjects = new DataObject\Cargo\Listing();
+            foreach($cargosObjects as $cargoObject) {
+                $cargos[$cargoObject->getTypeCargo()] = $cargoObject;
+            }
         $builder
             ->add('number', TextType::class, [
                 'label' => 'Flight number: ',
@@ -58,6 +62,14 @@ class TaskType extends AbstractType
                 'required' => true,
                 'attr' => ['class' => 'form-select'],
                 'choices' => $planes,
+            ])
+            ->add('cargo', ChoiceType::class, [
+                'label' => 'Choose cargo type: ',
+                'required' => true,
+                'attr' => ['class' => ''],
+                'choices' => $cargos,
+                'expanded' => true,
+                'multiple' => true,
             ])
             ->add('save', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-primary'],

@@ -39,6 +39,7 @@ class DefaultController extends FrontendController
             $newFlight->setTo($data['to']);
             $newFlight->setDateFlight(new Carbon($data['dateFlight']));
             $newFlight->setPlane($data['plane']);
+            $newFlight->setCargos($data['cargo']);
             try {
                 $newFlight->save();
                 $this->addFlash('success', 'Flight number was saved');
