@@ -46,7 +46,11 @@ class DefaultController extends FrontendController
             $newAsset->setFilename($data['waybill']->getClientOriginalName());
             $newAsset->setData(file_get_contents($data['waybill']->getRealPath()));
             $newAsset->setParentId(2);
-            $newAsset->save();
+            try {
+                $newAsset->save();
+            } catch (\Exception $e) {
+                $this->addFlash('error-asset', 'This asset is already saved');
+            }
 
             $newFlight->setWaybill($newAsset);
 

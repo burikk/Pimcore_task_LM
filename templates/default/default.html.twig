@@ -8,6 +8,11 @@
                     {{ form_widget(form_flight.number, { 'attr': {'class': 'form-control', 'placeholder': 'Flight number: '}}) }}
                     <label for={{ form_flight.number.vars.id }}>{{ form_flight.number.vars.label }}</label> 
                 </div>
+                {% for message in app.flashes('error') %}
+                    <div class="alert alert-danger alert-sm mb-4 p-1 text-center">
+                        {{ message }}
+                    </div>
+                {% endfor %}
                 <div class="form-floating mb-3">
                     {{ form_widget(form_flight.from, { 'attr': {'class': 'form-control', 'placeholder': 'From: '}}) }}
                     <label for={{ form_flight.from.vars.id }}>{{ form_flight.from.vars.label }}</label>
@@ -32,21 +37,21 @@
                     {{ form_label(form_flight.waybill) }}
                     {{ form_widget(form_flight.waybill) }}                    
                 </div>
+                {% for message in app.flashes('error-asset') %}
+                    <div class="alert alert-danger mb-4 p-1 text-center">
+                        {{ message }}
+                    </div>
+                {% endfor %}
                 <div class="input-group mb-3 justify-content-center">
                     {{ form_widget(form_flight.save) }}
                 </div>
                 {% for message in app.flashes('success') %}
-                    <div class="alert alert-success mb-3 text-center">
+                    <div class="alert alert-success mb-4 p-1 text-center">
                         {{ message }}
                     </div>
                 {% endfor %}    
-                {% for message in app.flashes('error') %}
-                    <div class="alert alert-danger mb-3 text-center">
-                        {{ message }}
-                    </div>
-                {% endfor %}
                 {% for message in app.flashes('validError') %}
-                    <div class="alert alert-warning mb-3 text-center">
+                    <div class="alert alert-warning mb-4 p-1 text-center">
                         {{ message }}
                     </div>
                 {% endfor %}
