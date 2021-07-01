@@ -38,13 +38,11 @@ class TaskType extends AbstractType
                     new NotBlank(),
                     new Length(['min' => 3]),
                 ],
-                'attr' => ['class' => 'form-control']
             ])
             ->add('from', TextType::class, [
                 'label' => 'From: ',
                 'required' => true,
                 'constraints' => [new NotBlank()],
-                'attr' => ['class' => 'form-control']
             ])
             ->add('to', TextType::class, [
                 'label' => 'To: ',
