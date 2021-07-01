@@ -2,10 +2,8 @@
     
     {% block content %}
     <div class="container">
-
-        {{ form_start(form_flight) }}
         <div class="row justify-content-center align-items-center">
-            <div class="col-md-6">
+        {{ form_start(form_flight, { 'attr': {'class': 'col-11 col-md-5 col-lg-6 col-sm-11',}}) }}
                 <div class="form-floating mb-3">
                     {{ form_widget(form_flight.number, { 'attr': {'class': 'form-control', 'placeholder': 'Flight number: '}}) }}
                     <label for={{ form_flight.number.vars.id }}>{{ form_flight.number.vars.label }}</label> 
@@ -14,8 +12,9 @@
                     {{ form_widget(form_flight.from, { 'attr': {'class': 'form-control', 'placeholder': 'From: '}}) }}
                     <label for={{ form_flight.from.vars.id }}>{{ form_flight.from.vars.label }}</label>
                 </div>
-                <div class="form-group mb-3">
-                    {{ form_row(form_flight.to) }}
+                <div class="form-floating mb-3">
+                    {{ form_widget(form_flight.to, { 'attr': {'class': 'form-control', 'placeholder': 'To: '}}) }}
+                    <label for={{ form_flight.to.vars.id }}>{{ form_flight.to.vars.label }}</label>
                 </div>
                 <div class="form-group mb-3">
                     {{ form_label(form_flight.dateFlight) }}
@@ -51,8 +50,7 @@
                         {{ message }}
                     </div>
                 {% endfor %}
-            </div>
-        </div>
-        {{ form_end(form_flight) }}        
+        {{ form_end(form_flight) }}  
+        </div>      
     </div>
     {% endblock %}
